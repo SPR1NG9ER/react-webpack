@@ -9,7 +9,7 @@ module.exports = ({ mode } = { mode: "production" }) => {
 
     return merge({
         mode,
-        entry: "./src/index.js",
+        entry: "./src/index.tsx",
         devServer: {
             hot: true,
             open: true
@@ -22,18 +22,26 @@ module.exports = ({ mode } = { mode: "production" }) => {
         module: {
             rules: [
                 {
-                    test: /\.(js|jsx)$/,
+                    test: /\.js$/,
                     exclude: /node_modules/,
-                    loader: "babel-loader"
-                }
+                    use: {
+                        loader: "babel-loader"
+                    }
+                },
+                {
+                    test: /\.(ts|tsx)?$/,
+                    loader: "ts-loader",
+                    exclude: /node_modules/
+                },
             ]
         },
-
+        resolve: {
+            extensions: ['.ts', '.js', '.json', ".tsx"]
+        },
         plugins: [
             new HtmlWebpackPlugin({
                 template: "./public/index.html"
             }),
-            new webpack.HotModuleReplacementPlugin()
         ],
     },
         modeConfiguration(mode)
