@@ -1,0 +1,20 @@
+.counter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.countButton{
+  padding: 10px;
+  cursor: pointer ;
+  font-size: 1rem;
+  background: #6312af;
+  border-radius: 6px;
+  color: white;
+  outline: none;
+  font-weight: 700;
+  border: 1px solid white;
+}
